@@ -1,4 +1,9 @@
+"use client";
+import { useState } from "react";
+
 export default function SignUp() {
+  const [role, setRole] = useState("seeker");
+
   return (
     <main style={{minHeight:'100vh', background:'#fff7ed', display:'flex', alignItems:'center', justifyContent:'center', padding:'40px 16px'}}>
       <div style={{width:'100%', maxWidth:'460px'}}>
@@ -15,16 +20,41 @@ export default function SignUp() {
           {/* WHO ARE YOU */}
           <p style={{fontSize:'13px', fontWeight:'700', color:'#374151', marginBottom:'12px'}}>I want to join as</p>
           <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px', marginBottom:'28px'}}>
-            <div style={{padding:'16px', borderRadius:'16px', border:'2px solid #f97316', background:'#fff7ed', textAlign:'center', cursor:'pointer'}}>
+
+            {/* SEEKER */}
+            <div
+              onClick={() => setRole("seeker")}
+              style={{
+                padding:'16px',
+                borderRadius:'16px',
+                border: role === "seeker" ? '2px solid #f97316' : '2px solid #e5e7eb',
+                background: role === "seeker" ? '#fff7ed' : '#f9fafb',
+                textAlign:'center',
+                cursor:'pointer',
+                transition:'all 0.2s'
+              }}>
               <div style={{fontSize:'24px', marginBottom:'6px'}}>🔍</div>
-              <div style={{fontSize:'13px', fontWeight:'700', color:'#f97316'}}>Find a Consultant</div>
+              <div style={{fontSize:'13px', fontWeight:'700', color: role === "seeker" ? '#f97316' : '#6b7280'}}>Find a Consultant</div>
               <div style={{fontSize:'11px', color:'#9ca3af', marginTop:'4px'}}>I need guidance</div>
             </div>
-            <div style={{padding:'16px', borderRadius:'16px', border:'2px solid #e5e7eb', background:'#f9fafb', textAlign:'center', cursor:'pointer'}}>
+
+            {/* CONSULTANT */}
+            <div
+              onClick={() => setRole("consultant")}
+              style={{
+                padding:'16px',
+                borderRadius:'16px',
+                border: role === "consultant" ? '2px solid #f97316' : '2px solid #e5e7eb',
+                background: role === "consultant" ? '#fff7ed' : '#f9fafb',
+                textAlign:'center',
+                cursor:'pointer',
+                transition:'all 0.2s'
+              }}>
               <div style={{fontSize:'24px', marginBottom:'6px'}}>🎓</div>
-              <div style={{fontSize:'13px', fontWeight:'700', color:'#6b7280'}}>Be a Consultant</div>
+              <div style={{fontSize:'13px', fontWeight:'700', color: role === "consultant" ? '#f97316' : '#6b7280'}}>Be a Consultant</div>
               <div style={{fontSize:'11px', color:'#9ca3af', marginTop:'4px'}}>I want to guide others</div>
             </div>
+
           </div>
 
           {/* DIVIDER */}
@@ -79,7 +109,7 @@ export default function SignUp() {
 
           {/* BUTTON */}
           <button style={{width:'100%', padding:'16px', background:'#f97316', color:'white', borderRadius:'16px', fontWeight:'700', fontSize:'15px', border:'none', cursor:'pointer', boxShadow:'0 4px 12px rgba(249,115,22,0.3)'}}>
-            Create My Account →
+            {role === "consultant" ? "Apply as Consultant →" : "Create My Account →"}
           </button>
 
           <p style={{fontSize:'12px', color:'#9ca3af', textAlign:'center', marginTop:'20px', lineHeight:'1.6'}}>

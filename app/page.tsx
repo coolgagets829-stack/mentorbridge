@@ -18,7 +18,7 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="text-center py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-orange-50 to-white">
+      <section className="text-center py-16 md:py-24 px-4 md:px-6 bg-linear-to-b from-orange-50 to-white">
         <div className="inline-block bg-orange-100 text-orange-600 text-xs font-semibold px-4 py-1 rounded-full mb-5">
           ✅ 100% Verified Consultants — Trusted by thousands
         </div>
