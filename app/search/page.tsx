@@ -59,19 +59,21 @@ export default function Search() {
           <p style={{fontSize:'14px', color:'#6b7280', marginBottom:'20px'}}>Browse 500+ verified experts across 12 categories</p>
 
           {/* SEARCH BOX */}
-          <div style={{display:'flex', gap:'10px', background:'white', borderRadius:'16px', padding:'8px', border:'1.5px solid #fed7aa', boxShadow:'0 4px 12px rgba(249,115,22,0.1)'}}>
-            <span style={{fontSize:'18px', padding:'8px'}}>🔍</span>
-            <input
-              type="text"
-              placeholder="Search by name, category or topic..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              style={{flex:1, border:'none', outline:'none', fontSize:'14px', background:'transparent', color:'#111827'}}
-            />
-            <button style={{padding:'10px 20px', background:'#f97316', color:'white', borderRadius:'12px', border:'none', fontWeight:'700', fontSize:'13px', cursor:'pointer'}}>
-              Search
-            </button>
-          </div>
+          {/* SEARCH BOX */}
+{/* SEARCH BOX */}
+<div style={{background:'white', borderRadius:'16px', border:'1.5px solid #fed7aa', boxShadow:'0 4px 12px rgba(249,115,22,0.1)', padding:'8px', display:'flex', flexWrap:'wrap', gap:'8px', alignItems:'center'}}>
+  <span style={{fontSize:'18px', padding:'0 8px'}}>🔍</span>
+  <input
+    type="text"
+    placeholder="Search by name, category or topic..."
+    value={search}
+    onChange={e => setSearch(e.target.value)}
+    style={{flex:1, minWidth:'200px', border:'none', outline:'none', fontSize:'14px', background:'transparent', color:'#111827', padding:'10px 0'}}
+  />
+  <button style={{padding:'12px 24px', background:'#f97316', color:'white', borderRadius:'12px', border:'none', fontWeight:'700', fontSize:'14px', cursor:'pointer', whiteSpace:'nowrap'}}>
+    Search
+  </button>
+</div>
         </div>
       </div>
 
