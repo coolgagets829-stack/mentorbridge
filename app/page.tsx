@@ -12,8 +12,8 @@ export default function Home() {
           <a href="#" className="hover:text-orange-500">Pricing</a>
         </div>
         <div className="flex gap-2">
-          <button className="px-3 md:px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded-full hover:border-orange-400">Login</button>
-          <button className="px-3 md:px-4 py-2 text-sm text-white bg-orange-500 rounded-full hover:bg-orange-600">Sign Up</button>
+          <a href="/login" className="px-3 md:px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded-full hover:border-orange-400">Login</a>
+          <a href="/signup" className="px-3 md:px-4 py-2 text-sm text-white bg-orange-500 rounded-full hover:bg-orange-600">Sign Up</a>
         </div>
       </nav>
 
@@ -29,12 +29,12 @@ export default function Home() {
           Student, professional, patient or facing a legal issue — connect with a verified expert and get the right guidance in minutes.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center px-4">
-          <button className="w-full sm:w-auto px-8 py-4 bg-orange-500 text-white rounded-full text-lg font-semibold hover:bg-orange-600">
-            Find a Consultant
-          </button>
-          <button className="w-full sm:w-auto px-8 py-4 border border-gray-300 text-gray-700 rounded-full text-lg font-semibold hover:border-orange-400">
-            Become a Consultant
-          </button>
+          <a href="/search" className="w-full sm:w-auto px-8 py-4 bg-orange-500 text-white rounded-full text-lg font-semibold hover:bg-orange-600 text-center">
+  Find a Consultant
+</a>
+<a href="/signup" className="w-full sm:w-auto px-8 py-4 border border-gray-300 text-gray-700 rounded-full text-lg font-semibold hover:border-orange-400 text-center">
+  Become a Consultant
+</a>
         </div>
         <p className="text-sm text-gray-400 mt-5">Join 2,000+ people already getting expert guidance</p>
 
@@ -172,12 +172,12 @@ export default function Home() {
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get the Right Guidance?</h2>
         <p className="text-orange-100 text-base md:text-lg mb-8">Join thousands of people making better decisions with expert help</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <button className="w-full sm:w-auto px-8 py-4 bg-white text-orange-500 rounded-full text-lg font-semibold hover:bg-orange-50">
-            Find a Consultant Now
-          </button>
-          <button className="w-full sm:w-auto px-8 py-4 border-2 border-white text-white rounded-full text-lg font-semibold hover:bg-orange-600">
-            Apply as a Consultant
-          </button>
+          <a href="/search" className="w-full sm:w-auto px-8 py-4 bg-orange-500 text-white rounded-full text-lg font-semibold hover:bg-orange-600 text-center">
+  Find a Consultant
+</a>
+<a href="/signup" className="w-full sm:w-auto px-8 py-4 border border-gray-300 text-gray-700 rounded-full text-lg font-semibold hover:border-orange-400 text-center">
+  Become a Consultant
+</a>
         </div>
       </section>
 
