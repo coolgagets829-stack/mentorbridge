@@ -68,13 +68,19 @@ export default function SignUp() {
   };
 
   const handleConsultantSubmit = async () => {
-    if (!form.full_name || !form.phone || !form.email || !form.category) {
-      setError("Please fill all required fields");
+    if (!form.full_name || !form.phone || !form.email || !form.category || !form.password) {
+      setError("Please fill all required fields including password");
       return;
     }
     setLoading(true);
     setError("");
     try {
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: form.email,
+        password: form.password,
+      });
+      if (authError) throw authError;
+
       const { data: userData, error: userError } = await supabase
         .from("users")
         .insert({
@@ -85,7 +91,6 @@ export default function SignUp() {
         })
         .select()
         .single();
-
       if (userError) throw userError;
 
       const { error: consultantError } = await supabase
@@ -103,7 +108,6 @@ export default function SignUp() {
           available_days: form.available_days,
           linkedin_url: form.linkedin_url || null,
         });
-
       if (consultantError) throw consultantError;
       setSuccess(true);
     } catch (err: any) {
@@ -219,6 +223,10 @@ export default function SignUp() {
                       />
                     ))}
                   </div>
+                  <p style={{fontSize:'12px', color:'#9ca3af', textAlign:'center', marginTop:'14px'}}>
+                    Didn't receive?{' '}
+                    <span onClick={() => setOtpSent(false)} style={{color:'#f97316', cursor:'pointer', fontWeight:'600'}}>Resend OTP</span>
+                  </p>
                 </div>
               )}
 
@@ -254,6 +262,11 @@ export default function SignUp() {
                   <div style={{padding:'14px 16px', borderRadius:'12px', border:'1.5px solid #e5e7eb', fontSize:'14px', background:'#f3f4f6', fontWeight:'700', color:'#374151'}}>+91</div>
                   <input type="tel" placeholder="10 digit mobile number" value={form.phone} onChange={e => update('phone', e.target.value)} style={{flex:1, padding:'14px 16px', borderRadius:'12px', border:'1.5px solid #e5e7eb', fontSize:'14px', background:'#f9fafb', outline:'none'}}/>
                 </div>
+              </div>
+
+              <div style={{marginBottom:'20px'}}>
+                <label style={{fontSize:'12px', fontWeight:'600', color:'#374151', display:'block', marginBottom:'8px'}}>Password</label>
+                <input type="password" placeholder="Create a strong password" value={form.password} onChange={e => update('password', e.target.value)} style={{width:'100%', padding:'14px 16px', borderRadius:'12px', border:'1.5px solid #e5e7eb', fontSize:'14px', background:'#f9fafb', outline:'none', boxSizing:'border-box'}}/>
               </div>
 
               <div style={{background:'#fff7ed', borderRadius:'16px', padding:'16px', marginBottom:'20px'}}>
