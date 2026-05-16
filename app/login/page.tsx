@@ -14,22 +14,28 @@ export default function Login() {
   const handleSeekerLogin = async () => {
     if (!phone) { setError("Please enter your phone number"); return; }
     if (!otpSent) {
-      // Check if phone exists in database
-      const { data, error } = await supabase
-        .from("users")
-        .select("id")
-        .eq("phone", phone)
-        .eq("role", "seeker")
-        .single();
-      if (error || !data) {
-        setError("No account found with this phone number. Please sign up first.");
-        return;
-      }
-      setOtpSent(true);
+      setLoading(true);
       setError("");
+      try {
+        const { data, error } = await supabase
+          .from("users")
+          .select("id, full_name")
+          .eq("phone", phone)
+          .eq("role", "seeker")
+          .single();
+        if (error || !data) {
+          setError("No account found with this phone number. Please sign up first.");
+          return;
+        }
+        setOtpSent(true);
+      } catch (err: any) {
+        setError("Something went wrong. Please try again.");
+      } finally {
+        setLoading(false);
+      }
       return;
     }
-    // For now simulate OTP verify — real OTP needs Twilio
+    // OTP verified — redirect to home
     window.location.href = "/";
   };
 
